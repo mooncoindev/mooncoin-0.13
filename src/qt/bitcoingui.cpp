@@ -135,8 +135,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     }
     windowTitle += " " + networkStyle->getTitleAddText();
 #ifndef Q_OS_MAC
-    QApplication::setWindowIcon(networkStyle->getTrayAndWindowIcon());
-    setWindowIcon(networkStyle->getTrayAndWindowIcon());
+    //QApplication::setWindowIcon(networkStyle->getTrayAndWindowIcon());
+    //setWindowIcon(networkStyle->getTrayAndWindowIcon());
 #else
     MacDockIconHandler::instance()->setIcon(networkStyle->getAppIcon());
 #endif
@@ -578,7 +578,7 @@ void BitcoinGUI::createTrayIcon(const NetworkStyle *networkStyle)
     trayIcon = new QSystemTrayIcon(this);
     QString toolTip = tr("%1 client").arg(tr(PACKAGE_NAME)) + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
-    trayIcon->setIcon(networkStyle->getTrayAndWindowIcon());
+    //trayIcon->setIcon(networkStyle->getTrayAndWindowIcon());
     trayIcon->hide();
 #endif
 
