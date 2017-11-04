@@ -1,12 +1,9 @@
-// Copyright (c) 2011-2015 The Bitcoin Core developers
-// Distributed under the MIT software license, see the accompanying
+// Copyright (c) 2011-2014 The Bitcoin developers
+// Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
-#endif
-
 #include "splashscreen.h"
+
 #include "clientversion.h"
 #include "init.h"
 #include "networkstyle.h"
@@ -26,46 +23,14 @@
 SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) :
     QWidget(0, Qt::FramelessWindowHint), curAlignment(0)
 {
-    // set reference point, paddings
-    int paddingRight            = 765;
-    int paddingRightCopyright   = 795;
-    int paddingTop              = 285;
-    int paddingCopyrightTop     = 185;
-    int titleCopyrightVSpace    = 14;
 
-    float fontFactor            = 1.0;
-
-    // define text to place
-    QString versionText     = QString("Version 0.13.3-segwit");
-    QString copyrightText1   = QChar(0xA9)+QString(" 2013-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Mooncoin Core developers"));
-    QString titleAddText    = networkStyle->getTitleAddText();
+    float fontFactor        = 1.0;
     QString font            = QApplication::font().toString();
-
-    // load the bitmap for writing some text over it
     pixmap     = networkStyle->getSplashImage();
-
     QPainter pixPaint(&pixmap);
     pixPaint.setPen(QColor(245,245,245));
     pixPaint.setFont(QFont(font, 8*fontFactor));
-
     QFontMetrics fm = pixPaint.fontMetrics();
-
-    // draw copyright stuff
-    pixPaint.setFont(QFont(font, 9*fontFactor));
-	pixPaint.drawText(pixmap.width()-paddingRightCopyright,(paddingTop+paddingCopyrightTop+titleCopyrightVSpace)-30,versionText);
-    pixPaint.setFont(QFont(font, 8*fontFactor));
-    pixPaint.drawText(pixmap.width()-paddingRightCopyright,paddingTop+paddingCopyrightTop,copyrightText1);
-
-    // draw additional text if special network
-    if(!titleAddText.isEmpty()) {
-        QFont boldFont = QFont(font, 10*fontFactor);
-        boldFont.setWeight(QFont::Bold);
-        pixPaint.setFont(boldFont);
-        fm = pixPaint.fontMetrics();
-        int titleAddTextWidth  = fm.width(titleAddText);
-        pixPaint.drawText(pixmap.width()-titleAddTextWidth-10,15,titleAddText);
-    }
-
     pixPaint.end();
 	
     // Resize window and move to center of desktop, disallow resizing
@@ -144,7 +109,7 @@ void SplashScreen::paintEvent(QPaintEvent *event)
     painter.drawPixmap(0, 0, pixmap);
     QRect r = rect().adjusted(5, 5, -5, -5);
     painter.setPen(curColor);
-    painter.drawText(r, curAlignment, curMessage);
+    //painter.drawText(r, curAlignment, curMessage);
 	sleep(3);
 }
 

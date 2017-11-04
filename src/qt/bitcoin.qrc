@@ -1,4 +1,7 @@
 <!DOCTYPE RCC><RCC version="1.0">
+	<qresource prefix="/images">
+		<file alias="splash">res/images/splash.png</file>
+	</qresource>
     <qresource prefix="/icons">
         <file alias="bitcoin">res/icons/bitcoin.png</file>
         <file alias="address-book">res/icons/address-book.png</file>
@@ -41,8 +44,7 @@
         <file alias="filesave">res/icons/filesave.png</file>
         <file alias="debugwindow">res/icons/debugwindow.png</file>
         <file alias="open">res/icons/open.png</file>
-        <file alias="info">res/icons/info.png</file>
-		<file alias="splash">res/images/splash.png</file>
+        <file alias="info">res/icons/info.png</file>		
         <file alias="about">res/icons/about.png</file>
         <file alias="about_qt">res/icons/about_qt.png</file>
         <file alias="verify">res/icons/verify.png</file>
