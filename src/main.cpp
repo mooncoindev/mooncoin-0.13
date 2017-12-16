@@ -85,7 +85,7 @@ int64_t nMaxTipAge = DEFAULT_MAX_TIP_AGE;
 bool fEnableReplacement = DEFAULT_ENABLE_REPLACEMENT;
 
 //baz's own
-int AlgoForkHeight = 1165000;
+int AlgoForkHeight = 1250000;
 bool AlgoSwitch = false;
 double LastBlocks = -1;
 double ClientUptime = -1;
